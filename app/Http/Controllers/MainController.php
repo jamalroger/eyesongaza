@@ -17,7 +17,11 @@ class MainController extends Controller
 
     public function status(Request $request)
     {
-        return ['number' => Petition::count()];
+        $petition = null;
+        if ($request->id) {
+            $petition = Petition::find($request->id);
+        }
+        return ['number' => Petition::count(), 'petition' => $petition];
     }
 
 
@@ -25,7 +29,7 @@ class MainController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'comment' => 'text',
+            'comment' => 'string',
         ]);
 
         $data =  $request->only(['name', 'comment']);
@@ -34,6 +38,6 @@ class MainController extends Controller
 
         $petition =  Petition::create($data);
 
-        return ['number' => Petition::count(), 'partition' => $petition];
+        return ['number' => Petition::count(), 'partition' => $petition, 'id' =>  $petition->getKey()];
     }
 }

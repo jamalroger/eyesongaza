@@ -14,6 +14,13 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: '../public/spa'
+    outDir: '../public',
+    rollupOptions: {
+      output: {
+        entryFileNames: `[name].js`,
+        chunkFileNames: `[name].js`,
+        assetFileNames: `[name].[ext]`
+      }
+    }
   }
 })

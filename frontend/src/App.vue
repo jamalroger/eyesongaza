@@ -1,14 +1,14 @@
 <template>
-    <div class="main-section" style="background-image: url('@/assets/war.png')">
+    <div class="main-section">
         <div class="img-war">
 
-            <img src="@/assets/war.png" class="" alt="" />
-            <img src="@/assets/fog.png" class="img-white-bg" alt="" />
+            <img src="/war.png" class="" alt="" />
+            <img src="/fog.png" class="img-white-bg" alt="" />
         </div>
         <!----------------- LOGO  ----------------->
         <div class="states">
-            <div id="logo">
-                <img src="@/assets/logo.svg" class="" alt="" />
+            <div id="logo" style="padding:10px">
+                <img src="/logo.png" class="" alt="" style="width: 200px;" />
             </div>
             <!----------------- STATE  ----------------->
             <div class="hr"></div>
@@ -72,7 +72,6 @@
             </p>
             <div class="main-margin"></div>
             <button class="danger" @click="downloadBadge">
-
                 <svg v-if="isLoading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" height="80px">
                     <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="40" cy="65">
                         <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
@@ -93,7 +92,7 @@
             </button>
             <div class="main-margin"></div>
 
-            <div class="badge" id="badge">
+            <div v-if="petition" class="badge" id="badge">
                 <div class="head">
                     <!-- <span class="top"> -->
                     All <span class="red">eyes</span> <br />
@@ -109,11 +108,6 @@
                             I'm <span class="name">{{ petition.name }}</span>
                         </div>
                         <div class="msg">
-                            <svg fill="#000000" width="800px" height="800px" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M21,4a1,1,0,0,0-1-1H17V2a1,1,0,0,0-1-1H8A1,1,0,0,0,7,2V3H4A1,1,0,0,0,3,4V22a1,1,0,0,0,1,1H20a1,1,0,0,0,1-1ZM9,3h6V5H9ZM19,21H5V5H7V6A1,1,0,0,0,8,7h8a1,1,0,0,0,1-1V5h2Zm-6-3a1,1,0,0,1-1,1H8a1,1,0,0,1,0-2h4A1,1,0,0,1,13,18Zm4-4a1,1,0,0,1-1,1H8a1,1,0,0,1,0-2h8A1,1,0,0,1,17,14Zm0-4a1,1,0,0,1-1,1H8A1,1,0,0,1,8,9h8A1,1,0,0,1,17,10Z" />
-                            </svg>
                             {{ petition.comment }}
                         </div>
                     </div>
@@ -179,6 +173,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
+import { toPng } from "html-to-image";
 
 // * DATA
 let petition = ref(null);
@@ -297,10 +292,10 @@ function downloadBadge() {
 
     isLoading.value = true;
     const element = document.getElementById('badge');
-    htmlToImage.toPng(element)
+    toPng(element)
         .then((dataUrl) => {
             const link = document.createElement('a');
-            link.download = 'my-image.png';
+            link.download = petition.name + '-alleyesongaza.png';
             link.href = dataUrl;
             link.click();
             isLoading.value = false;
@@ -670,17 +665,18 @@ button {
 }
 
 .badge {
-    width: 100vw;
-    height: 100vh;
-    background-image: url(./assets/mainPic.jpeg);
+    /* width: 100vw;
+    height: 100vh; */
+    background-image: url(/mainPic.jpeg);
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
     padding-top: 45px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    --main-color: #a71126;
-
+    color: #fff;
+    bottom: 0px;
+    height: 100%;
+    left: 0px;
 }
 
 /* head */
@@ -825,9 +821,12 @@ button {
 
 .badge .footer {
     background: #3e3e3e;
-    width: 100%;
     padding: 10px 20px;
     text-align: center;
     font-size: clamp(0.5rem, 1.6vh, 5rem);
+}
+
+.badge .red {
+    color: #a71126;
 }
 </style>

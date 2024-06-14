@@ -12,6 +12,7 @@
   "dependencies": {
     "@egjs/vue3-flicking": "^4.11.3",
     "axios": "^1.7.2",
+    "html-to-image": "^1.11.11",
     "vue": "^3.4.21"
   },
   "devDependencies": {

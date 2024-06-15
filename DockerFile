@@ -22,6 +22,8 @@ RUN composer install --prefer-dist --no-dev
 
 EXPOSE 8000
 
+
+
 ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
 
 

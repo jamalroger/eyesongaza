@@ -10,8 +10,9 @@ RUN install-php-extensions \
     mbstring \
     tokenizer \
     xml \
-	opcache
-
+	opcache \
+    mongodb-stable
+    
 COPY . /app
 
 WORKDIR /app

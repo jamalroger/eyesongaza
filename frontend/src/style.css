@@ -1,0 +1,584 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+/* body{
+  background-image: url('https://foreignpolicy.com/wp-content/uploads/2023/11/gaza-israel-hamas-war-GettyImages-1774031826.jpg?w=800?quality=80');
+  background-repeat: no-repeat;
+  background-size: cover  ;
+} */
+
+:root {
+    --main-color-text: #3f5873;
+    --main-radius: 50px;
+    --main-height: 45px;
+    --main-margin-bottom: 18px;
+    --main-border-color: #d1e0f0;
+    --main-padding: 10px;
+    --main-red: #c60812;
+}
+
+.danger {
+    /* background-color: white; */
+    /* color: #517194; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid #D1E0F0; */
+    background-color: var(--main-red);
+    color: #fff;
+}
+
+.danger svg {
+
+    margin-right: 10px;
+}
+
+.light {
+    background-color: white;
+    border: 1px solid var(--main-border-color);
+    color: var(--main-color-text);
+}
+
+hr {
+    background-color: var(--main-border-color);
+    height: 2px;
+}
+
+input,
+button,
+textarea {
+    height: var(--main-height);
+    width: 100%;
+    border: none;
+    border-radius: var(--main-radius);
+    /* padding: var(--main-padding); */
+}
+
+input,
+textarea {
+    padding-left: 20px;
+    border: 1px solid var(--main-border-color) !important;
+    outline: none;
+    width: calc(100% - 20px) !important;
+}
+
+.err-msg {
+    color: var(--main-red);
+    font-size: 14px;
+    text-align: left;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.name {
+    color: #000;
+    font-size: 14px;
+}
+
+.name:focus {
+    border: 1px solid black !important;
+    font-weight: 800;
+}
+
+.name:focus::placeholder {
+    color: black;
+}
+
+.name::placeholder {
+    color: #517194 !important;
+}
+
+button {
+    font-weight: 700;
+}
+
+.title {
+    color: #000;
+    font-weight: 700;
+    font-size: 28px;
+    text-align: left;
+    text-align: center;
+}
+
+.main-margin {
+    margin-bottom: var(--main-margin-bottom);
+}
+
+.comment {
+    background-color: var(--main-border-color);
+    color: var(--main-color-text) !important;
+}
+
+.hr {
+    background-color: var(--main-border-color);
+    height: 1px;
+    width: 100%;
+}
+
+/* STATES */
+
+.states .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.states .header .circle {
+    height: 11px;
+    width: 11px;
+    border-radius: 50%;
+    background-color: var(--main-red);
+}
+
+.states .header span {
+    color: var(--main-red);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.states .totals {
+    color: #000;
+    font-size: 3em;
+    text-align: justify;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.states p {
+    color: var(--main-color-text);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    text-align: center;
+
+}
+
+.submited h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.submited p {
+    margin: 0;
+    color: var(--main-color-text);
+}
+
+.flex-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-5 {
+    gap: 5px;
+}
+
+.donations h4 {
+    color: var(--main-color-text);
+    margin-bottom: 0px;
+}
+
+/* ORGANISATIONS */
+.organisation {
+    border: 1px solid var(--main-border-color);
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--main-color-text);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.organisation img {
+    margin-bottom: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    #app {
+        padding: 25px;
+        text-align: center;
+    }
+
+    #logo {
+        width: 100%;
+    }
+
+    .main-section {
+        width: 100%;
+    }
+
+    form,
+    input,
+    button {
+        width: 100%;
+    }
+
+    form {
+        text-align: left;
+    }
+}
+
+@media (min-width: 769px) {
+    body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #app {
+        width: 50%;
+        margin: auto;
+        text-align: center !important;
+        border: 1px solid var(--main-border-color);
+        padding: 25px;
+        border-radius: var(--main-radius);
+    }
+}
+
+.img-war {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    top: -5px;
+    opacity: 0.5;
+}
+
+.img-war img {
+    object-fit: cover;
+
+
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0px -20px 20px 0px white;
+    height: 100%;
+
+}
+
+.img-war .img-white-bg {
+
+    position: absolute;
+    top: -48%;
+    left: 0;
+    z-index: 4;
+    height: 74vh;
+}
+
+.states {
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #d1e0f0;
+
+}
+
+.dn {
+    font-size: 20px;
+    color: #3F5873;
+    font-weight: bold;
+}
+
+.live-icon {
+    display: inline-block;
+    position: relative;
+    top: calc(50% - 5px);
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    margin-left: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.live-icon:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    -webkit-animation: live 2s ease-in-out infinite;
+    animation: live 2s ease-in-out infinite;
+    z-index: -1;
+}
+
+@-webkit-keyframes live {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    100% {
+        transform: scale(3.5, 3.5);
+        background-color: rgba(255, 0, 0, 0);
+    }
+}
+
+@keyframes live {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    100% {
+        transform: scale(3.5, 3.5);
+        background-color: rgba(255, 0, 0, 0);
+    }
+}
+
+.badge {
+    /* width: 100vw;
+    height: 100vh; */
+    background-image: url(/mainPic.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    padding-top: 45px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    bottom: 0px;
+    /* height: 100%; */
+    left: 0px;
+}
+
+/* head */
+.badge .head {
+    display: block;
+    width: fit-content;
+    font-size: clamp(3rem, 5vw, 4rem);
+    font-weight: 600;
+    margin: auto;
+    margin-bottom: 17vh;
+    font-style: italic;
+    line-height: 30px;
+    padding-inline: 20px;
+}
+
+.badge .head .eyes {
+    /* mix-blend-mode: multiply; */
+    margin-top: 10px;
+}
+
+/* head */
+/* Main */
+.badge .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex: 1;
+    padding-inline: 20px;
+
+}
+
+.badge .main .byMsg .by {
+    font-size: clamp(2.2rem, 3vw, 2.5rem);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.34px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.badge .main .byMsg .by .name {
+    color: #fef000;
+}
+
+.badge .main .byMsg .msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: clamp(0.6rem, 3vw, 1rem);
+    font-weight: 200;
+}
+
+.badge .main .byMsg .msg svg {
+    width: fit-content;
+    height: 16px;
+    stroke: #fff;
+
+}
+
+.badge .main .join {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* font-size: clamp(0.6rem, 3vw, 1rem); */
+
+.badge .main .join .joinMsg {
+    font-size: clamp(1rem, 2vw, 1rem);
+    font-weight: 400;
+
+    /* display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-size: clamp(0.6rem, 3vw, 1rem); */
+}
+
+
+.badge .main .join .link {
+    padding: 2px 10px;
+    background: #318621;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    border-radius: 13px;
+    font-size: clamp(1rem, 2vw, 1rem);
+    text-decoration: none;
+    gap: 5px;
+}
+
+
+.badge .main .join .link i {
+    font-size: 14px;
+}
+
+.badge .main .data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.badge .main .data .more {
+    font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+    font-weight: 300;
+    color: #8b8786;
+    letter-spacing: -0.76px;
+}
+
+.badge .main .data .count {
+    font-size: clamp(3rem, 4vw, 5rem);
+    font-weight: 700;
+}
+
+.badge .main .data .people {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    font-weight: 200;
+}
+
+.badge .main .social {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* font-size: clamp(1rem, 2vh, 3rem); */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(1rem, 2vh, 3rem);
+    font-weight: 300;
+
+}
+
+.badge .footer {
+    background: #3e3e3e;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: clamp(0.5rem, 1.6vh, 5rem);
+}
+
+.badge .red {
+    color: #a71126;
+}
+
+/* The Modal (background) */
+.modal {
+    /* display: none; */
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    /* padding-top: 100px; */
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    background: #fff;
+    /* Black w/ opacity */
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    position: absolute;
+    right: 13px;
+    color: #A71126;
+}
+
+
+
+.social-media {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.social-media i {
+    font-size: 25px;
+}
+
+.social-media i.fa-facebook {
+    color: #65A1F6;
+}
+
+.social-media i.fa-instagram {
+    color: #D46064;
+}
+
+.social-media i.fa-tiktok {
+    color: #000000;
+}
+
+.social-media i.fa-x-twitter {
+    color: #6DB9F5;
+}
+
+.social-media i.fa-linkedin-in {
+    color: #5E94D5;
+}

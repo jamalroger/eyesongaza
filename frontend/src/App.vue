@@ -40,7 +40,7 @@
             <p>Join the Humans saying No to Genocide</p>
         </div>
 
-        <h2 class="title">
+        <h2 v-if="!submited" class="title">
             Stand with Palestine <br />
             Stop Genocide.
         </h2>
@@ -50,10 +50,31 @@
             <input type="text" v-model="name" class="name" placeholder="Your name" />
             <span class="err-msg" v-if="errorMsg">This field is required</span>
             <div class="main-margin"></div>
-            <input type="text" class="comment" v-model="comment" placeholder="Comment (optional)" />
+            <textarea type="text" class="comment" v-model="comment" placeholder="Comment (optional)"
+                style="padding: 16px;"> </textarea>
             <div class="main-margin"></div>
             <button class="danger">
-                I Stand against Genocide</button>
+
+                <svg v-if="isLoading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" height="80px">
+                    <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="40" cy="65">
+                        <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
+                            keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
+                    </circle>
+                    <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="100" cy="65">
+                        <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
+                            keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
+                    </circle>
+                    <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="160" cy="65">
+                        <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
+                            keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
+                    </circle>
+                </svg>
+                <span v-if="!isLoading">
+                    I Stand against Genocide
+                </span>
+
+
+            </button>
             <div class="main-margin"></div>
         </form>
         <!--------------------------- IF FORM SUBMITED ---------------------------->
@@ -71,91 +92,25 @@
                 Share your budge on your social Media to help your friends help
             </p>
             <div class="main-margin"></div>
-            <button class="danger" @click="downloadBadge">
-                <svg v-if="isLoading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" height="80px">
-                    <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="40" cy="65">
-                        <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
-                            keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
-                    </circle>
-                    <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="100" cy="65">
-                        <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
-                            keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
-                    </circle>
-                    <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="160" cy="65">
-                        <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
-                            keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
-                    </circle>
-                </svg>
 
-                <span v-if="!isLoading"> Share your badge </span>
-
-            </button>
-            <div class="main-margin"></div>
-
-            <div v-if="petition" class="badge" id="badge">
-                <div class="head">
-                    <!-- <span class="top"> -->
-                    All <span class="red">eyes</span> <br />
-                    <!-- </span> -->
-                    <!-- <span class="bottom"> -->
-                    <!-- <img class="eyes" src="./assets/eyes.jpg" alt="eyes gaza"> -->
-                    <i class="fa-solid fa-eye eyes red"></i>n Gaza
-                    <!-- </span> -->
-                </div>
-                <div class="main">
-                    <div class="byMsg">
-                        <div class="by">
-                            I'm <span class="name">{{ petition.name }}</span>
-                        </div>
-                        <div class="msg">
-                            {{ petition.comment }}
-                        </div>
-                    </div>
-
-                    <div class="join">
-                        <span class="joinMsg">
-                            Join & Get your badge
-                        </span>
-                        <span class="link" id="link">
-                            <i class="fa-solid fa-arrow-right"></i>
-                            http://palestinianblood.org/
-                        </span>
-                    </div>
-
-                    <div class="data">
-                        <div class="more">
-                            More than
-                        </div>
-                        <div class="count">
-                            {{ stats.toLocaleString("en-US") }}
-                        </div>
-                        <div class="people">
-                            <i class="fa-solid fa-user"></i>
-                            People Partipated
-                        </div>
-                    </div>
-                    <div class="social">
-                        <i class="fa-brands fa-facebook-f"></i>
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-tiktok"></i>
-                        <i class="fa-brands fa-x-twitter"></i>
-                        <i class="fa-brands fa-linkedin-in"></i>
-                        <span class="slash">
-                            / All_eyes_on_Gaza
-                        </span>
-                    </div>
-                </div>
-                <div class="footer">
-                    @ From the river to the sea palestine will be free
-                </div>
+            <div class="social-media">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-tiktok"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-linkedin-in"></i>
             </div>
 
+            <button class="danger" @click="showModal = true">
+                Share your badge
+            </button>
+            <div class="main-margin"></div>
         </div>
         <div class="main-margin"></div>
         <!--------------------------- DONATION ---------------------------->
         <div class="hr"></div>
         <div class="donations">
-            <p class="dn">Donations go to the following organisations </p>
+            <p class="dn">trusted organisations for donations </p>
             <div>
                 <div v-for="(organisation, index) in oraganisations" :key="index" class="organisation">
                     <a :href="organisation.link" target="_blank">
@@ -166,6 +121,106 @@
 
             </div>
         </div>
+
+        <!-- The Modal -->
+        <div class="modal" v-if="showModal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" @click="showModal = false">&times;</span>
+                <div v-if="petition" class="badge" id="badge">
+                    <div class="head">
+                        <!-- <span class="top"> -->
+                        All <span class="red">eyes</span> <br />
+                        <!-- </span> -->
+                        <!-- <span class="bottom"> -->
+                        <!-- <img class="eyes" src="./assets/eyes.jpg" alt="eyes gaza"> -->
+                        <i class="fa-solid fa-eye eyes red"></i>n Gaza
+                        <!-- </span> -->
+                    </div>
+                    <div class="main">
+                        <div class="byMsg">
+                            <div class="by">
+                                I'm <span class="name">{{ petition.name }}</span>
+                            </div>
+                            <div class="msg">
+                                {{ petition.comment }}
+                            </div>
+                        </div>
+
+                        <div class="join">
+                            <span class="joinMsg">
+                                Join & Get your badge
+                            </span>
+                            <span class="link" id="link">
+                                <i class="fa-solid fa-arrow-right"></i>
+                                http://palestinianblood.org/
+                            </span>
+                        </div>
+
+                        <div class="data">
+                            <div class="more">
+                                More than
+                            </div>
+                            <div class="count">
+                                {{ stats.toLocaleString("en-US") }}
+                            </div>
+                            <div class="people">
+                                <i class="fa-solid fa-user"></i>
+                                People Partipated
+                            </div>
+                        </div>
+                        <div class="social">
+                            <i class="fa-brands fa-facebook-f"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-brands fa-tiktok"></i>
+                            <i class="fa-brands fa-x-twitter"></i>
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <span class="slash">
+                                / All_eyes_on_Gaza
+                            </span>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        @ From the river to the sea palestine will be free
+                    </div>
+                </div>
+
+                <div>
+                    <div class="social-media">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-tiktok"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+                </div>
+                <div style="max-width: 80%;margin: auto;height: 100px;">
+                    <button class="danger" @click="shareBudge">
+                        <svg v-if="isLoading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" height="80px">
+                            <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="40" cy="65">
+                                <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
+                                    keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
+                            </circle>
+                            <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="100" cy="65">
+                                <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
+                                    keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
+                            </circle>
+                            <circle fill="#ffffff" stroke="#ffffff" stroke-width="15" r="15" cx="160" cy="65">
+                                <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;"
+                                    keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
+                            </circle>
+                        </svg>
+
+                        <span v-if="!isLoading"> Share </span>
+                    </button>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
     </div>
 
 </template>
@@ -182,6 +237,8 @@ let comment = ref();
 let submited = ref(false);
 let isLoaded = ref(false);
 let isLoading = ref(false);
+let showModal = ref(false);
+
 
 let stats = ref(0);
 let errorMsg = ref(false);
@@ -243,6 +300,7 @@ let oraganisations = ref([
 function addUser() {
     if (name.value) {
         errorMsg.value = false;
+        isLoading.value = true;
         axios
             .post(
                 "https://palastineblood.org/api/petition/add",
@@ -255,6 +313,8 @@ function addUser() {
                 console.log(response.data);
                 submited.value = true;
                 stats.value = response.data.number;
+                isLoading.value = false;
+
                 localStorage.setItem('id', response.data.id)
             });
     } else {
@@ -288,16 +348,65 @@ function getStates() {
 }
 
 
-function downloadBadge() {
+const dataURLtoFile = (dataurl, filename) => {
+    var arr = dataurl.split(","),
+        mimeType = arr[0].match(/:(.*?);/)[1],
+        decodedData = atob(arr[1]),
+        lengthOfDecodedData = decodedData.length,
+        u8array = new Uint8Array(lengthOfDecodedData);
+    while (lengthOfDecodedData--) {
+        u8array[lengthOfDecodedData] = decodedData.charCodeAt(lengthOfDecodedData);
+    }
+    return new File([u8array], filename, { type: mimeType });
+};
+
+
+const shareFile = (file, title, text) => {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator
+            .share({
+                files: [file],
+                title,
+                text
+            })
+            .then(() => console.log("Share was successful."))
+            .catch((error) => console.log("Sharing failed", error));
+    } else {
+        console.log(`Your system doesn't support sharing files.`);
+    }
+};
+
+
+
+const createImage = () => {
+    toJpeg(document.getElementById("thanku_poster"), { quality: 0.95 }).then(
+        (dataUrl) => {
+
+        }
+    );
+};
+
+
+
+function shareBudge() {
 
     isLoading.value = true;
     const element = document.getElementById('badge');
     toPng(element)
         .then((dataUrl) => {
-            const link = document.createElement('a');
-            link.download = petition.name + '-alleyesongaza.png';
-            link.href = dataUrl;
-            link.click();
+
+            const filename = petition.value.name + '-alleyesongaza.png';
+            const file = dataURLtoFile(dataUrl, filename);
+
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                shareFile(file, "alleyesongaza", "https://palastineblood.org");
+            } else {
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = dataUrl;
+                link.click();
+            }
+
             isLoading.value = false;
 
         })
@@ -306,6 +415,8 @@ function downloadBadge() {
         });
 
 }
+
+
 // * HOOKS
 onMounted(() => {
     getStates();
@@ -314,519 +425,3 @@ onMounted(() => {
     }, 10 * 1000);
 });
 </script>
-
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-
-* {
-    font-family: "Inter", sans-serif;
-}
-
-/* body{
-  background-image: url('https://foreignpolicy.com/wp-content/uploads/2023/11/gaza-israel-hamas-war-GettyImages-1774031826.jpg?w=800?quality=80');
-  background-repeat: no-repeat;
-  background-size: cover  ;
-} */
-
-:root {
-    --main-color-text: #3f5873;
-    --main-radius: 50px;
-    --main-height: 45px;
-    --main-margin-bottom: 18px;
-    --main-border-color: #d1e0f0;
-    --main-padding: 10px;
-    --main-red: #c60812;
-}
-
-.danger {
-    /* background-color: white; */
-    /* color: #517194; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* border: 1px solid #D1E0F0; */
-    background-color: var(--main-red);
-    color: #fff;
-}
-
-.danger svg {
-
-    margin-right: 10px;
-}
-
-.light {
-    background-color: white;
-    border: 1px solid var(--main-border-color);
-    color: var(--main-color-text);
-}
-
-hr {
-    background-color: var(--main-border-color);
-    height: 2px;
-}
-
-input,
-button {
-    height: var(--main-height);
-    width: 100%;
-    border: none;
-    border-radius: var(--main-radius);
-    /* padding: var(--main-padding); */
-}
-
-input {
-    padding-left: 20px;
-    border: 1px solid var(--main-border-color) !important;
-    outline: none;
-    width: calc(100% - 20px) !important;
-}
-
-.err-msg {
-    color: var(--main-red);
-    font-size: 14px;
-    text-align: left;
-    font-weight: 500;
-    display: inline-block;
-    margin-top: 5px;
-    margin-left: 10px;
-}
-
-.name {
-    color: #000;
-    font-size: 14px;
-}
-
-.name:focus {
-    border: 1px solid black !important;
-    font-weight: 800;
-}
-
-.name:focus::placeholder {
-    color: black;
-}
-
-.name::placeholder {
-    color: #517194 !important;
-}
-
-button {
-    font-weight: 700;
-}
-
-.title {
-    color: #000;
-    font-weight: 700;
-    font-size: 28px;
-    text-align: left;
-    text-align: center;
-}
-
-.main-margin {
-    margin-bottom: var(--main-margin-bottom);
-}
-
-.comment {
-    background-color: var(--main-border-color);
-    color: var(--main-color-text) !important;
-}
-
-.hr {
-    background-color: var(--main-border-color);
-    height: 1px;
-    width: 100%;
-}
-
-/* STATES */
-
-.states .header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-.states .header .circle {
-    height: 11px;
-    width: 11px;
-    border-radius: 50%;
-    background-color: var(--main-red);
-}
-
-.states .header span {
-    color: var(--main-red);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-.states .totals {
-    color: #000;
-    font-size: 3em;
-    text-align: justify;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.states p {
-    color: var(--main-color-text);
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    text-align: center;
-
-}
-
-.submited h1 {
-    font-size: 28px;
-    font-weight: 700;
-}
-
-.submited p {
-    margin: 0;
-    color: var(--main-color-text);
-}
-
-.flex-center-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.gap-10 {
-    gap: 10px;
-}
-
-.gap-5 {
-    gap: 5px;
-}
-
-.donations h4 {
-    color: var(--main-color-text);
-    margin-bottom: 0px;
-}
-
-/* ORGANISATIONS */
-.organisation {
-    border: 1px solid var(--main-border-color);
-    padding: 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--main-color-text);
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.organisation img {
-    margin-bottom: 10px;
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
-
-@media (max-width: 768px) {
-    #app {
-        padding: 25px;
-        text-align: center;
-    }
-
-    #logo {
-        width: 100%;
-    }
-
-    .main-section {
-        width: 100%;
-    }
-
-    form,
-    input,
-    button {
-        width: 100%;
-    }
-
-    form {
-        text-align: left;
-    }
-}
-
-@media (min-width: 769px) {
-    body {
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #app {
-        width: 50%;
-        margin: auto;
-        text-align: center !important;
-        border: 1px solid var(--main-border-color);
-        padding: 25px;
-        border-radius: var(--main-radius);
-    }
-}
-
-.img-war {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 50%;
-    left: 0;
-    top: -5px;
-    opacity: 0.5;
-}
-
-.img-war img {
-    object-fit: cover;
-
-
-    width: 100%;
-    height: 100%;
-    box-shadow: inset 0px -20px 20px 0px white;
-    height: 100%;
-
-}
-
-.img-war .img-white-bg {
-
-    position: absolute;
-    top: -48%;
-    left: 0;
-    z-index: 4;
-    height: 74vh;
-}
-
-.states {
-    padding: 20px;
-    background: white;
-    border-radius: 20px;
-    border: 1px solid #d1e0f0;
-
-}
-
-.dn {
-    font-size: 20px;
-    color: #3F5873;
-    font-weight: bold;
-}
-
-.live-icon {
-    display: inline-block;
-    position: relative;
-    top: calc(50% - 5px);
-    background-color: red;
-    width: 10px;
-    height: 10px;
-    margin-left: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.live-icon:before {
-    content: "";
-    display: block;
-    position: absolute;
-    background-color: rgba(255, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    -webkit-animation: live 2s ease-in-out infinite;
-    animation: live 2s ease-in-out infinite;
-    z-index: -1;
-}
-
-@-webkit-keyframes live {
-    0% {
-        transform: scale(1, 1);
-    }
-
-    100% {
-        transform: scale(3.5, 3.5);
-        background-color: rgba(255, 0, 0, 0);
-    }
-}
-
-@keyframes live {
-    0% {
-        transform: scale(1, 1);
-    }
-
-    100% {
-        transform: scale(3.5, 3.5);
-        background-color: rgba(255, 0, 0, 0);
-    }
-}
-
-.badge {
-    /* width: 100vw;
-    height: 100vh; */
-    background-image: url(/mainPic.jpeg);
-    background-repeat: no-repeat;
-    background-size: 100vw 100vh;
-    padding-top: 45px;
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    bottom: 0px;
-    height: 100%;
-    left: 0px;
-}
-
-/* head */
-.badge .head {
-    display: block;
-    width: fit-content;
-    font-size: clamp(3rem, 5vw, 4rem);
-    font-weight: 600;
-    margin: auto;
-    margin-bottom: 17vh;
-    font-style: italic;
-    line-height: 30px;
-    padding-inline: 20px;
-}
-
-.badge .head .eyes {
-    /* mix-blend-mode: multiply; */
-    margin-top: 10px;
-}
-
-/* head */
-/* Main */
-.badge .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 20px;
-    flex: 1;
-    padding-inline: 20px;
-
-}
-
-.badge .main .byMsg .by {
-    font-size: clamp(2.2rem, 3vw, 2.5rem);
-    font-style: italic;
-    font-weight: 500;
-    letter-spacing: -0.34px;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.badge .main .byMsg .by .name {
-    color: #fef000;
-}
-
-.badge .main .byMsg .msg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    font-size: clamp(0.6rem, 3vw, 1rem);
-    font-weight: 200;
-}
-
-.badge .main .byMsg .msg svg {
-    width: fit-content;
-    height: 16px;
-    stroke: #fff;
-
-}
-
-.badge .main .join {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-/* font-size: clamp(0.6rem, 3vw, 1rem); */
-
-.badge .main .join .joinMsg {
-    font-size: clamp(1rem, 2vw, 1rem);
-    font-weight: 400;
-
-    /* display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        font-size: clamp(0.6rem, 3vw, 1rem); */
-}
-
-
-.badge .main .join .link {
-    padding: 2px 10px;
-    background: #318621;
-    display: flex;
-    align-items: center;
-    height: 32px;
-    border-radius: 13px;
-    font-size: clamp(1rem, 2vw, 1rem);
-    text-decoration: none;
-    gap: 5px;
-}
-
-
-.badge .main .join .link i {
-    font-size: 14px;
-}
-
-.badge .main .data {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-.badge .main .data .more {
-    font-size: clamp(0.6rem, 1.5vw, 0.9rem);
-    font-weight: 300;
-    color: #8b8786;
-    letter-spacing: -0.76px;
-}
-
-.badge .main .data .count {
-    font-size: clamp(3rem, 4vw, 5rem);
-    font-weight: 700;
-}
-
-.badge .main .data .people {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: clamp(0.8rem, 2vw, 1.5rem);
-    font-weight: 200;
-}
-
-.badge .main .social {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    /* font-size: clamp(1rem, 2vh, 3rem); */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: clamp(1rem, 2vh, 3rem);
-    font-weight: 300;
-
-}
-
-.badge .footer {
-    background: #3e3e3e;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: clamp(0.5rem, 1.6vh, 5rem);
-}
-
-.badge .red {
-    color: #a71126;
-}
-</style>

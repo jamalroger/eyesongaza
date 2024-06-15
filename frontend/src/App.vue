@@ -215,8 +215,6 @@
                     </button>
                 </div>
 
-
-
             </div>
 
         </div>
@@ -226,9 +224,14 @@
 </template>
 
 <script setup>
+
+
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import { toPng } from "html-to-image";
+
+
+axios.defaults.baseURL = document.querySelector('meta[name=api]') ? document.querySelector('meta[name=api]').content : 'https://palastineblood.org/api';
 
 // * DATA
 let petition = ref(null);
@@ -302,8 +305,7 @@ function addUser() {
         errorMsg.value = false;
         isLoading.value = true;
         axios
-            .post(
-                "https://palastineblood.org/api/petition/add",
+            .post("/petition/add",
                 {
                     name: name.value,
                     comment: comment.value,
@@ -326,7 +328,7 @@ function addUser() {
 
 function getStates() {
     axios
-        .get("https://palastineblood.org/api/status", {
+        .get("/status", {
             params: {
                 id: localStorage.getItem('id')
             }

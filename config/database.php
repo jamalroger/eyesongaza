@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Str;
 
+
+
 return [
 
     /*
@@ -32,7 +34,7 @@ return [
     'connections' => [
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => 'mongodb+srv://username:password@<atlas-cluster-uri>/myappdb?retryWrites=true&w=majority',
+            'dsn' => 'mongodb+srv://gaza:gaza@<atlas-cluster-uri>/gazaeyes?retryWrites=true&w=majority',
             'database' => 'gazaeyes',
         ],
         'sqlite' => [

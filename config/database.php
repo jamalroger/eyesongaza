@@ -34,8 +34,11 @@ return [
     'connections' => [
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => 'mongodb+srv://gaza:gaza@127.0.0.1:27017/gazaeyes?retryWrites=true&w=majority',
             'database' => 'gazaeyes',
+            'host' => '127.0.0.1',
+            'port' => 27017,
+            'username' => 'gaza',
+            'password' => 'gaza',
         ],
         'sqlite' => [
             'driver' => 'sqlite',

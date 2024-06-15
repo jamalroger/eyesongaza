@@ -12,7 +12,7 @@ RUN install-php-extensions \
     xml \
 	opcache \
     mongodb-stable
-    
+
 COPY . /app
 
 WORKDIR /app
@@ -21,9 +21,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN composer install --prefer-dist --no-dev
 
+RUN mv .envprod .env
+
 EXPOSE 8000
-
-
 
 ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
 

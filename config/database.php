@@ -34,7 +34,7 @@ return [
     'connections' => [
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => 'mongodb+srv://gaza:gaza@<atlas-cluster-uri>/gazaeyes?retryWrites=true&w=majority',
+            'dsn' => 'mongodb+srv://gaza:gaza@127.0.0.1:27017/gazaeyes?retryWrites=true&w=majority',
             'database' => 'gazaeyes',
         ],
         'sqlite' => [

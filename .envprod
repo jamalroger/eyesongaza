@@ -1,0 +1,11 @@
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:WDG1OcXiBGY7n8WH3CMMyGqyxlP3EHUpRvdWTYmKED8=
+APP_DEBUG=true
+APP_TIMEZONE=UTC
+APP_URL=http://localhost
+OCTANE_SERVER=frankenphp
+
+
+
+

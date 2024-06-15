@@ -23,7 +23,6 @@ RUN composer install --prefer-dist --no-dev
 
 RUN mv .envprod .env
 
-EXPOSE 8000
 
 ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
 

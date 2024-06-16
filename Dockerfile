@@ -9,7 +9,6 @@ RUN install-php-extensions \
     bcmath \
     mbstring \
     tokenizer \
-    sockets \
     xml \
 	opcache \
     mongodb-stable

@@ -23,9 +23,8 @@ RUN composer install --prefer-dist --no-dev
 
 RUN mv .envprod .env
 
-EXPOSE 8080 
 
-CMD ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=8080", "-d"]
+ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
 
 
 

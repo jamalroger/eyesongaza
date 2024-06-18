@@ -6,6 +6,3 @@ APP_TIMEZONE=UTC
 APP_URL=http://localhost
 OCTANE_SERVER=frankenphp
 
-
-
-

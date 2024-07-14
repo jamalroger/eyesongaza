@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('comment')->nullable();
             $table->string('ip');
-            $table->json('device_info');
+            $table->text('device_info');
             $table->timestamps();
         });
     }

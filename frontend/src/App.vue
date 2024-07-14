@@ -231,7 +231,7 @@ import axios from "axios";
 import { toPng } from "html-to-image";
 
 
-axios.defaults.baseURL = document.querySelector('meta[name=api]') ? document.querySelector('meta[name=api]').content : 'http://127.0.0.1:8000/api';
+axios.defaults.baseURL = document.querySelector('meta[name=api]') ? document.querySelector('meta[name=api]').content : 'https://palastineblood.org/api';
 
 // * DATA
 let petition = ref(null);

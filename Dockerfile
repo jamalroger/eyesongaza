@@ -27,7 +27,7 @@ RUN mv .envprod .env
 
 RUN php artisan optimize 
 
-RUN php artisan migrate 
+# RUN php artisan migrate 
 
 ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
 

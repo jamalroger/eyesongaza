@@ -6,3 +6,7 @@ APP_TIMEZONE=UTC
 APP_URL=http://localhost
 OCTANE_SERVER=frankenphp
 
+DB_CONNECTION=pgsql
+DB_DATABASE=gazaapp
+DB_USERNAME=gazaapp
+DB_PASSWORD=gazaapp_password

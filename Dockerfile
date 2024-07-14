@@ -3,6 +3,8 @@ FROM dunglas/frankenphp
 RUN install-php-extensions \
     pcntl \
     pdo_mysql \
+    pdo_pgsql \
+    pgsql \
     gd \
 	intl \
 	zip \
@@ -10,8 +12,8 @@ RUN install-php-extensions \
     mbstring \
     tokenizer \
     xml \
-	opcache \
-    mongodb-stable
+	opcache 
+    
 
 COPY . /app
 

@@ -23,6 +23,7 @@ RUN composer install --prefer-dist --no-dev
 
 RUN mv .envprod .env
 
+RUN php artisan optimize && php artisan migrate 
 
 ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
 

@@ -29,7 +29,7 @@ RUN php artisan optimize
 
 # RUN php artisan migrate 
 
-ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
+ENTRYPOINT ["php", "artisan", "octane:frankenphp", "--port", "9000"]
 
 
 

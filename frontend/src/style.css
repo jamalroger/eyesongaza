@@ -47,9 +47,8 @@ hr {
     height: 2px;
 }
 
-input,
-button,
-textarea {
+input[type='text'],
+button {
     height: var(--main-height);
     width: 100%;
     border: none;
@@ -57,12 +56,11 @@ textarea {
     /* padding: var(--main-padding); */
 }
 
-input,
+input[type='text'],
 textarea {
-    padding-left: 20px;
     border: 1px solid var(--main-border-color) !important;
     outline: none;
-    width: calc(100% - 20px) !important;
+    width: 100%;
 }
 
 .err-msg {
@@ -80,14 +78,14 @@ textarea {
     font-size: 14px;
 }
 
-.name:focus {
+/* .name:focus {
     border: 1px solid black !important;
     font-weight: 800;
-}
-
+} */
+/* 
 .name:focus::placeholder {
     color: black;
-}
+} */
 
 .name::placeholder {
     color: #517194 !important;
@@ -110,8 +108,9 @@ button {
 }
 
 .comment {
-    background-color: var(--main-border-color);
+    /* background-color: var(--main-border-color); */
     color: var(--main-color-text) !important;
+    height: 40px;
 }
 
 .hr {
@@ -223,12 +222,6 @@ button {
     }
 
     .main-section {
-        width: 100%;
-    }
-
-    form,
-    input,
-    button {
         width: 100%;
     }
 

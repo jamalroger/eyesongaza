@@ -47,11 +47,17 @@
         <div class="main-margin"></div>
         <!--------------------------- FORM ---------------------------->
         <form @submit.prevent="addUser" v-if="!submited">
-            <input type="text" v-model="name" class="name" placeholder="Your name" />
+            <input style="border-radius: 9px;padding-left: 10px;width: -webkit-fill-available;" type="text"
+                v-model="name" class="name" placeholder="Your name" />
             <span class="err-msg" v-if="errorMsg">This field is required</span>
             <div class="main-margin"></div>
-            <textarea type="text" class="comment" v-model="comment" placeholder="Comment (optional)"
-                style="padding: 16px;"> </textarea>
+            <textarea style="border-radius: 9px;padding: 16px;width: -webkit-fill-available;" type="text"
+                class="comment" v-model="comment" placeholder="Comment (optional)"> </textarea>
+            <div>
+                <input style="width: 40px;" type="checkbox" name="privacy" required>I have read and i accepted the
+                <a href="/privacy" target="_blank">data privacy policy <i class="fa fa-external-link"></i></a>
+            </div>
+
             <div class="main-margin"></div>
             <button class="danger">
 
@@ -153,7 +159,7 @@
                             </span>
                             <span class="link" id="link">
                                 <i class="fa-solid fa-arrow-right"></i>
-                                http://palestinianblood.org/
+                                http://gazaeyes.org
                             </span>
                         </div>
 
@@ -166,7 +172,7 @@
                             </div>
                             <div class="people">
                                 <i class="fa-solid fa-user"></i>
-                                People Partipated
+                                already got their badge
                             </div>
                         </div>
                         <div class="social">
@@ -176,7 +182,7 @@
                             <i class="fa-brands fa-x-twitter"></i>
                             <i class="fa-brands fa-linkedin-in"></i>
                             <span class="slash">
-                                / All_eyes_on_Gaza
+                                #all_eyes_on_gaza
                             </span>
                         </div>
                     </div>
@@ -219,6 +225,8 @@
 
         </div>
 
+        <div class="footer">Made with <i class="fa fa-heart" style="color:red;margin-top:15px" aria-hidden="true"></i>
+            By <b>Moroccan devs</b></div>
     </div>
 
 </template>
@@ -315,8 +323,8 @@ function addUser() {
                 console.log(response.data);
                 submited.value = true;
                 stats.value = response.data.number;
+                petition.value = response.data.petition;
                 isLoading.value = false;
-
                 localStorage.setItem('id', response.data.id)
             });
     } else {

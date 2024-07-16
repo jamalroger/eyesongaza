@@ -84,7 +84,8 @@
             <div class="main-margin"></div>
         </form>
         <!--------------------------- IF FORM SUBMITED ---------------------------->
-        <div class="submited" v-if="submited">
+        <div style="margin-top:5px" class="submited" v-if="submited">
+            
             <svg width="92" height="92" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="0.699902" y="0.787793" width="90.6" height="90.6" rx="45.3" stroke="#D1E0F0"
                     stroke-width="0.6" />
@@ -95,7 +96,7 @@
             <h1>Submitted, Thank You!</h1>
             <div class="main-margin"></div>
             <p style="color:#3F5873">
-                Share your budge on your social Media to help your friends help
+                Share your budge on your social Media to help your friends 
             </p>
             <div class="main-margin"></div>
 
@@ -239,7 +240,7 @@ import axios from "axios";
 import { toPng } from "html-to-image";
 
 
-axios.defaults.baseURL = document.querySelector('meta[name=api]') ? document.querySelector('meta[name=api]').content : 'https://palastineblood.org/api';
+axios.defaults.baseURL = document.querySelector('meta[name=api]') ? document.querySelector('meta[name=api]').content : 'https://gazaeyes.org/api';
 
 // * DATA
 let petition = ref(null);

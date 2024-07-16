@@ -38,6 +38,6 @@ class MainController extends Controller
 
         $petition =  Petition::create($data);
 
-        return ['number' => Petition::count(), 'partition' => $petition, 'id' =>  $petition->getKey()];
+        return ['number' => Petition::count(), 'petition' => $petition, 'id' =>  $petition->getKey()];
     }
 }
